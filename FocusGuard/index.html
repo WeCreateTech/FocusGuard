@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusGuard | Screen Time Monitoring</title>
+  <meta name="description" content="A dashboard to monitor and manage kids screen time and focus.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <nav class="sidebar">
+      <div class="logo">
+        <i class="fa-solid fa-shield-halved bounce-icon"></i>
+        <span>FocusGuard</span>
+      </div>
+      <ul class="nav-links">
+        <li class="active" data-target="dashboard"><a href="#"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+        <li data-target="profiles"><a href="#"><i class="fa-solid fa-users"></i> Profiles</a></li>
+        <li data-target="limits"><a href="#"><i class="fa-solid fa-clock"></i> Limits</a></li>
+        <li data-target="settings"><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+      </ul>
+      <div class="user-profile">
+        <div class="avatar"><i class="fa-solid fa-user"></i></div>
+        <div class="info">
+          <span class="name">Parent Portal</span>
+          <span class="role">Admin</span>
+        </div>
+      </div>
+    </nav>
+    <main class="main-content">
+      
+      <!-- DASHBOARD VIEW -->
+      <section id="dashboard" class="view active">
+        <header>
+          <div class="header-content">
+            <h1>Overview</h1>
+            <p>Monitor current activity and focus trends.</p>
+          </div>
+          <button class="btn-primary" onclick="alert('Add profile dialog would open here!')"><i class="fa-solid fa-plus"></i> Add Profile</button>
+        </header>
+
+        <section class="stats-grid">
+          <div class="stat-card glass box-1">
+            <div class="stat-icon"><i class="fa-solid fa-laptop"></i></div>
+            <div class="stat-info">
+              <h3>Active Now</h3>
+              <p class="value">2 Devices</p>
+            </div>
+          </div>
+          <div class="stat-card glass box-2">
+            <div class="stat-icon"><i class="fa-solid fa-book-open"></i></div>
+            <div class="stat-info">
+              <h3>Focus Time (Today)</h3>
+              <p class="value">4h 12m</p>
+            </div>
+          </div>
+          <div class="stat-card glass box-3">
+            <div class="stat-icon"><i class="fa-solid fa-gamepad"></i></div>
+            <div class="stat-info">
+              <h3>Distraction Time</h3>
+              <p class="value alert-text">45m</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="content-grid">
+          <section class="activity-feed glass">
+            <h2><i class="fa-solid fa-pulse bounce-icon"></i> Live Activity Feed</h2>
+            <ul id="activityList"></ul>
+          </section>
+
+          <section class="alerts glass">
+            <h2><i class="fa-solid fa-bell bounce-icon"></i> Focus Alerts</h2>
+            <div class="alert warning">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <div>
+                <strong>Gaming Detected</strong>
+                <p>Alex has been playing Roblox for 30 mins during study hours.</p>
+              </div>
+              <button class="btn-small">Review</button>
+            </div>
+            <div class="alert success">
+              <i class="fa-solid fa-circle-check"></i>
+              <div>
+                <strong>Goal Reached</strong>
+                <p>Sam completed 2 hours of Khan Academy.</p>
+              </div>
+              <button class="btn-small">Good job!</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- PROFILES VIEW -->
+      <section id="profiles" class="view">
+        <header>
+          <div class="header-content">
+            <h1>Profiles</h1>
+            <p>Manage children and their assigned devices.</p>
+          </div>
+          <button class="btn-primary"><i class="fa-solid fa-user-plus"></i> New Child</button>
+        </header>
+        <div class="profiles-grid" id="profilesList">
+          <!-- Populated via JS -->
+        </div>
+      </section>
+
+      <!-- LIMITS VIEW -->
+      <section id="limits" class="view">
+        <header>
+          <div class="header-content">
+            <h1>Screen Time Limits</h1>
+            <p>Set boundaries for entertainment and games.</p>
+          </div>
+          <button class="btn-primary" onclick="alert('Rules Saved!')"><i class="fa-solid fa-floppy-disk"></i> Save Rules</button>
+        </header>
+        <div class="limits-container glass">
+          <div class="limit-group">
+            <h3><i class="fa-solid fa-gamepad"></i> Gaming Apps</h3>
+            <p>Maximum time allowed per day</p>
+            <div class="range-slider">
+              <input type="range" min="0" max="4" step="0.5" value="1.5" id="gameLimit">
+              <span class="range-value" id="gameLimitVal">1.5 hrs</span>
+            </div>
+          </div>
+          <hr class="divider">
+          <div class="limit-group">
+            <h3><i class="fa-brands fa-tiktok"></i> Social Media</h3>
+            <p>Maximum time allowed per day</p>
+            <div class="range-slider">
+              <input type="range" min="0" max="4" step="0.5" value="1" id="socialLimit">
+              <span class="range-value" id="socialLimitVal">1 hr</span>
+            </div>
+          </div>
+          <hr class="divider">
+          <div class="limit-group">
+            <h3><i class="fa-solid fa-moon"></i> Bedtime Block</h3>
+            <p>All non-educational apps blocked after this time</p>
+            <input type="time" value="21:00" class="time-input glass-input">
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS VIEW -->
+      <section id="settings" class="view">
+        <header>
+          <div class="header-content">
+            <h1>Settings</h1>
+            <p>Configure FocusGuard preferences.</p>
+          </div>
+        </header>
+        <div class="settings-container content-grid">
+           <div class="glass">
+              <h2>Account Settings</h2>
+              <br>
+              <div class="setting-item">
+                <label>Admin Email</label>
+                <input type="email" value="parent@example.com" class="glass-input">
+              </div>
+              <div class="setting-item">
+                <label>Password</label>
+                <button class="btn-small" style="padding: 0.8rem 1.5rem">Change Password</button>
+              </div>
+           </div>
+           <div class="glass">
+            <h2>Notifications & Rules</h2>
+            <br>
+            <div class="toggle-row">
+              <span>Strict Mode (Auto-block games)</span>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span>Email Weekly Reports</span>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+            <div class="toggle-row">
+              <span>Instant Focus Alerts to Phone</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </div>
+           </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

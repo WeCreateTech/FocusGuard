@@ -1,0 +1,6 @@
+{
+  "appId": "com.wecreatetech.focusguard",
+  "appName": "FocusGuard",
+  "webDir": ".",
+  "bundledWebRuntime": false
+}
